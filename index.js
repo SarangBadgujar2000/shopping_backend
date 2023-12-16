@@ -7,7 +7,10 @@ const initializePassport = require("./passport");
 
 require("dotenv").config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin:true,
+  credentials:true
+}));
 mongoConnection(process.env.URI);
 
 app.use('/files',express.static('uploads'))

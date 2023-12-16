@@ -61,10 +61,11 @@ const loginUser = async (req, res) => {
       };
       const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: "1d" });
       //console.log(token);
+      res.cookie("token",token);
       return res.status(200).json({
         statusCode: 200,
         message: "User login successful",
-        data: `Bearer ${token}`,
+        //data: `Bearer ${token}`,
       });
     }
     return res.status(403).json({
